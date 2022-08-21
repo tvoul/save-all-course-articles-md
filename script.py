@@ -21,8 +21,8 @@ def getArticles(skip):
 def writeArticles(articles):
     for item in articles:
         with open(f'articles/{item[0]}.md', 'a', encoding='utf-8') as file:
-            file.write(str(item[1]) + '\n')
-            file.write(str(item[2]))
+            file.write('# ' + str(item[1]) + '\n')
+            file.write('\n' + str(item[2]))
 
 skip = 0
 for i in range(0, 8):
