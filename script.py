@@ -3,11 +3,13 @@ import datetime
 
 session = HTMLSession()
 articles = []
+skip = 0
 
 def getArticles(skip):
     url = f'https://devop.lms.nodehill.com/api/articles?skip={skip}&klass=devop&admin=&category='
     response = session.get(url)
     responsejson = response.json()
+    print(len(responsejson))
     for i in range (0, len(responsejson)):
         slug = responsejson[i]['slug']
         url = 'https://devop.lms.nodehill.com/rest/Article?body={"properties":{"slug":"' + slug + '"}}'
@@ -21,6 +23,9 @@ def getArticles(skip):
         article.append(rjson[0]['title'])
         article.append(rjson[0]['content'])
         articles.append(article)
+    if(len(responsejson) != 0):
+        skip += 40
+        getArticles(skip)
 
 def writeArticles(articles):
     for item in articles:
@@ -33,9 +38,5 @@ def convertDate(ms):
     date = datetime.datetime.fromtimestamp(int(ms / 1000)).strftime('%Y-%m-%d %H:%M:%S')
     return date
 
-skip = 0
-for i in range(0, 8):
-    getArticles(skip)
-    skip += 40
-
+getArticles(skip)
 writeArticles(articles)
