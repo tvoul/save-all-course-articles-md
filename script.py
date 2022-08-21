@@ -1,4 +1,5 @@
 from requests_html import HTMLSession
+import datetime
 
 session = HTMLSession()
 articles = []
@@ -14,6 +15,9 @@ def getArticles(skip):
         rjson = r.json()
         article = []
         article.append(rjson[0]['slug'])
+        timestamp = rjson[0]['publishedAt']
+        date = convertDate(timestamp)
+        article.append(date)
         article.append(rjson[0]['title'])
         article.append(rjson[0]['content'])
         articles.append(article)
@@ -21,8 +25,13 @@ def getArticles(skip):
 def writeArticles(articles):
     for item in articles:
         with open(f'articles/{item[0]}.md', 'a', encoding='utf-8') as file:
-            file.write('# ' + str(item[1]) + '\n')
-            file.write('\n' + str(item[2]))
+            file.write('###### ' + str(item[1]) + '\n')
+            file.write('# ' + str(item[2]) + '\n')
+            file.write('\n' + str(item[3]))
+
+def convertDate(ms):
+    date = datetime.datetime.fromtimestamp(int(ms / 1000)).strftime('%Y-%m-%d %H:%M:%S')
+    return date
 
 skip = 0
 for i in range(0, 8):
