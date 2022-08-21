@@ -17,7 +17,6 @@ def getArticles(skip):
         article.append(rjson[0]['title'])
         article.append(rjson[0]['content'])
         articles.append(article)
-        print(len(responsejson))
 
 def writeArticles(articles):
     for item in articles:
