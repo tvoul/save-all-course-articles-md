@@ -9,7 +9,6 @@ def getArticles(skip):
     url = f'https://devop.lms.nodehill.com/api/articles?skip={skip}&klass=devop&admin=&category='
     response = session.get(url)
     responsejson = response.json()
-    print(len(responsejson))
     for i in range (0, len(responsejson)):
         slug = responsejson[i]['slug']
         url = 'https://devop.lms.nodehill.com/rest/Article?body={"properties":{"slug":"' + slug + '"}}'
