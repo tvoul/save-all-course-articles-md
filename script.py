@@ -1,18 +1,17 @@
-from requests_html import HTMLSession
+import requests
 import datetime
 
-session = HTMLSession()
 articles = []
 skip = 0
 
 def getArticles(skip):
     url = f'https://devop.lms.nodehill.com/api/articles?skip={skip}&klass=devop&admin=&category='
-    response = session.get(url)
+    response = requests.get(url)
     responsejson = response.json()
     for i in range (0, len(responsejson)):
         slug = responsejson[i]['slug']
         url = 'https://devop.lms.nodehill.com/rest/Article?body={"properties":{"slug":"' + slug + '"}}'
-        r = session.get(url)
+        r = requests.get(url)
         rjson = r.json()
         article = []
         article.append(rjson[0]['slug'])
