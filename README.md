@@ -6,9 +6,9 @@ Every article will be saved in its own markdown (.md) file and contain date publ
 Can also be scheduled with a cronjob to automatically run daily for example, as it will overwrite copies.
 
 
-#### _Module datetime is built-in to python_
+_Module datetime is built-in to python_
 
-#### _Install module requests if you dont already have it_
+_Install module requests if you dont already have it_
 ```
     pip install requests
 ```
