@@ -1,7 +1,6 @@
 import requests
 import datetime
 
-
 articles = []
 skip = 0
 
