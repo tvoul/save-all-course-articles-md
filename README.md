@@ -6,7 +6,6 @@ Every article will be saved in its own .md file and contain date published, titl
 <br>
 
 #### Module datetime is built-in to python
-<br>
 
 #### Install requests module if you don't already have it
 ```
