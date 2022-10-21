@@ -56,7 +56,7 @@ def getArticles(skip):
         articles.append(article)
 
     #execute this function again if there were any responses last time
-    #it will therefore run once without any answers, skipped "too many"
+    #it will therefore run once with zero articles as a response, skipped "too many"
     #and then break
     if(len(responsejson) != 0):
         #increase skip by 40 to fetch the next batch
