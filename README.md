@@ -8,7 +8,7 @@ Can also be scheduled with a cronjob to automatically run daily for example, as 
 
 #### _Module datetime is built-in to python_
 
-#### Install requests module if you don't already have it
+#### _Install module requests if you dont already have it_
 ```
     pip install requests
 ```
