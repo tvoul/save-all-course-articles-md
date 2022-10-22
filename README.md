@@ -10,7 +10,7 @@ _Module datetime is built-in to python_
 
 _Install module requests if you dont already have it_
 ```
-    _pip install requests_
+    pip install requests
 ```
 
 
