@@ -18,6 +18,7 @@ def getArticles(skip):
         timestamp = rjson[0]['publishedAt']
         date = convertDate(timestamp)
         article.append(date)
+        article.append(', '.join(responsejson[i]['categories'])) 
         article.append(rjson[0]['title'])
         article.append(rjson[0]['content'])
         articles.append(article)
@@ -33,8 +34,9 @@ def writeArticles(articles):
     for article in articles:
         with open(f'articles/{article[0]}.md', 'w', encoding='utf-8') as file:
             file.write('###### ' + str(article[1]) + '\n')
-            file.write('# ' + str(article[2]) + '\n')
-            file.write('\n' + str(article[3]))
+            file.write('##### ' + str(article[2]) + '\n')
+            file.write('# ' + str(article[3]) + '\n')
+            file.write('\n' + str(article[4]))
 
 getArticles(skip)
 writeArticles(articles)
